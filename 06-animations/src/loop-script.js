@@ -7,15 +7,10 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 // Object
-const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5)
+const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
-
-// Helper
-const helper = new THREE.AxesHelper(1)
-scene.add(helper)
-
 
 // Sizes
 const sizes = {
@@ -35,26 +30,25 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 
 
-// Clock
-const clock = new THREE.Clock()
+
+// Time
+let time = Date.now()
+console.log(time);
 
 // Animation
 const loop = () => {
 
-    // Clock 
-    // elapsedTime returns Seconds  (not milliseconds)
-    const elapsedTime = clock.getElapsedTime()
-    console.log(elapsedTime);  
+    // console.log('looping')
+
+    // Time
+    const currentTime = Date.now()
+    const deltaTime = currentTime - time
+    time = currentTime
+
+    console.log(deltaTime);
 
     // Update object
-    // mesh.rotation.y = elapsedTime
-    // mesh.rotation.y = elapsedTime * Math.PI * 2
-    camera.position.y = Math.sin(elapsedTime)
-    camera.position.x = Math.cos(elapsedTime)
-
-    // look at the object center
-    camera.lookAt(mesh.position)
-
+    mesh.rotation.y += 0.001 * deltaTime
 
     // Render
     renderer.render(scene, camera)

@@ -1,4 +1,8 @@
 import * as THREE from 'three'
+import gsap from 'gsap'
+
+console.log(gsap);
+
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -35,26 +39,16 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 
 
-// Clock
-const clock = new THREE.Clock()
+
+// gsap animation
+gsap.to(mesh.position, { duration: 1, delay: 1, x: 2 })
+gsap.to(mesh.position, { duration: 1, delay: 2, x: 0 })
+
+// gsap has its own loop recursion, no need to put in loop() below
+
 
 // Animation
 const loop = () => {
-
-    // Clock 
-    // elapsedTime returns Seconds  (not milliseconds)
-    const elapsedTime = clock.getElapsedTime()
-    console.log(elapsedTime);  
-
-    // Update object
-    // mesh.rotation.y = elapsedTime
-    // mesh.rotation.y = elapsedTime * Math.PI * 2
-    camera.position.y = Math.sin(elapsedTime)
-    camera.position.x = Math.cos(elapsedTime)
-
-    // look at the object center
-    camera.lookAt(mesh.position)
-
 
     // Render
     renderer.render(scene, camera)
