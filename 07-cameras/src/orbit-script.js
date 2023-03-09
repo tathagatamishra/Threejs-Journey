@@ -1,5 +1,7 @@
 import * as THREE from 'three'
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 
+// console.log(OrbitControls);
 
 // Cursor
 const cursor = {
@@ -49,18 +51,16 @@ scene.add(helper)
 // Camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 
-// left / right / top / bottom  
-// sizes.width / sizes.height is not same here
-// need Aspect Ratio & multiply with left & right
-// const AR = sizes.width / sizes.height
-// console.log(AR);
-// const camera = new THREE.OrthographicCamera(-2 * AR, 2 * AR, 2, -2, 0.1, 100)
 
-// camera.position.x = 2
-// camera.position.y = 2
 camera.position.z = 3
 camera.lookAt(mesh.position)
 scene.add(camera)
+
+
+// Controls
+const controls = new OrbitControls(camera, canvas)
+controls.enableDamping = true
+
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
@@ -69,27 +69,11 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 
 
-// Animate
-const clock = new THREE.Clock()
 
 const tick = () => {
-    // const elapsedTime = clock.getElapsedTime()
-
-    // Update objects
-    // mesh.rotation.y = elapsedTime;
-
-
-    // update camera
-    // camera.position.x = cursor.x * 3
-    // camera.position.y = cursor.y * 3
-    
-    // to rotate camera behind the mesh
-    camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3
-    camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3
-    camera.position.y = cursor.y * 5
-
-    camera.lookAt(mesh.position)  // vector3 as parameter
-
+ 
+    // Update controls
+    controls.update()
 
     // Render
     renderer.render(scene, camera)
