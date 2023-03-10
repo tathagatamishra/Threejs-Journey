@@ -77,6 +77,8 @@ const helper = new THREE.AxesHelper(1.5)
 // Controls
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
+controls.enablePan = false
+controls.enableZoom = false
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
