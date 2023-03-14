@@ -14,10 +14,23 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
+
+//light
+
+const light = new THREE.PointLight({ color: 'white' })
+light.position.set(-1, 1, 1)
+scene.add(light)
+
+const ambLight = new THREE.AmbientLight({ color: 'white' })
+ambLight.intensity = 0.2
+scene.add(ambLight)
+
+
 // Object
 
-const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+const geometry = new THREE.BoxGeometry()
+const material = new THREE.MeshStandardMaterial({ color: 0xff0000, })
+material.roughness = 0.1
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
@@ -51,7 +64,8 @@ scene.add(camera)
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
-controls.enableDamping = true
+
+
 
 // Renderer
 
@@ -100,8 +114,10 @@ gui
 gui.add(mesh, 'visible')
 
 gui.add(material, 'wireframe')
+gui.add(material, 'roughness')
 
 gui.addColor(material, 'color').name('color')
+gui.addColor(light, 'color').name('light color')
 
 const parameters = {
     spin: () => {
@@ -114,7 +130,11 @@ const parameters = {
 
 gui.add(parameters, 'spin')
 
-
+gui.add(controls, 'autoRotate')
+gui.add(controls, 'autoRotateSpeed')
+gui.add(controls, 'enableDamping')
+gui.add(controls, 'enablePan')
+gui.add(controls, 'enableZoom')
 
 
 
