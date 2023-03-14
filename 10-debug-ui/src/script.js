@@ -76,6 +76,45 @@ gui
     .min(-10)
     .max(10)
     .step(0.01)
+    .name('Up & Down')
+
+gui
+    .add(mesh.scale, 'y')
+    .min(-10)
+    .max(10)
+    .step(0.01)
+    .name('scale Y')
+gui
+    .add(mesh.scale, 'x')
+    .min(-10)
+    .max(10)
+    .step(0.01)
+    .name('scale X')
+gui
+    .add(mesh.scale, 'z')
+    .min(-10)
+    .max(10)
+    .step(0.01)
+    .name('scale Z')
+
+gui.add(mesh, 'visible')
+
+gui.add(material, 'wireframe')
+
+gui.addColor(material, 'color').name('color')
+
+const parameters = {
+    spin: () => {
+
+        // console.log('spin');
+        // mesh.rotation.y++
+        gsap.to(mesh.rotation, { duration: 1, y: mesh.rotation.y + 10 })
+    }
+}
+
+gui.add(parameters, 'spin')
+
+
 
 
 
