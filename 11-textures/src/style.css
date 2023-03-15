@@ -1,0 +1,27 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body
+{
+    overflow: hidden;
+}
+
+.webgl
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    outline: none;
+    /* opacity:1; */
+    background: #3a3a3a;
+}
+
+.text {
+    position: absolute;
+    color: rgb(255, 157, 248);
+    font-family:Arial, Helvetica, sans-serif;
+}
