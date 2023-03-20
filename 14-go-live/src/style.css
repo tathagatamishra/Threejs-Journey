@@ -18,3 +18,13 @@ body
     outline: none;
     background-color: #F0DB4F;
 }
+
+
+/* My Preloader */
+#preloader {
+    background: #F0DB4F;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 2;
+}

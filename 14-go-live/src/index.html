@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>14 - Go live</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="preloader"></div>
+    
     <canvas class="webgl"></canvas>
-    <script type="module" src="./script.js"></script>
+
+    <!-- My Preloader -->
+    <script>
+        var loader = document.getElementById('preloader')
+
+        window.addEventListener('load', () => {
+            loader.style.display = 'none'
+        })
+    </script>
+    
+    <script type="module" src="script.js"></script>
 </body>
 </html>
