@@ -92,7 +92,7 @@ const doorRough = textureLoader.load('./textures/door/roughness.jpg')
 
 
 // Pixelated
-const gradientTexture = textureLoader.load('./textures/gradients/5.jpg')
+const gradientTexture = textureLoader.load('./textures/gradients/3.jpg')
 gradientTexture.magFilter = THREE.NearestFilter
 gradientTexture.magFilter = THREE.NearestFilter
 gradientTexture.generateMipmaps = false
@@ -178,7 +178,7 @@ sphere.position.set(0, 0, -3)
 
 const box = new THREE.Mesh(
     new THREE.BoxGeometry(1.5, 1.5, 1.5, 100,100,100),
-    material
+    toonMat
 )
 
 box.geometry.setAttribute(
