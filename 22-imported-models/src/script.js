@@ -55,6 +55,10 @@ gltfLoader.setDRACOLoader(dracoLoader)
 
 let mixer = null
 
+let i = {num: 0}
+
+console.log(i.num);
+
 gltfLoader.load(
 
     '/models/Fox/glTF/Fox.gltf',
@@ -81,8 +85,8 @@ gltfLoader.load(
 
         // Animation
         mixer = new THREE.AnimationMixer(gltf.scene)
-        const action = mixer.clipAction(gltf.animations[1])
-        console.log(action);
+        const action = mixer.clipAction(gltf.animations[i.num])
+        // console.log(action);
 
         action.play()
 
@@ -94,6 +98,14 @@ gltfLoader.load(
     // () => {console.log('progress')},
     // () => {console.log('error')}
 )
+
+// Debug
+// const gui = new dat.GUI()
+
+// gui.add(i, 'num').min(0).max(2).step(1)
+
+
+
 
 
 
@@ -138,11 +150,6 @@ scene.add(directionalLight)
 
 
 
-
-
-
-// Debug
-const gui = new dat.GUI()
 
 
 

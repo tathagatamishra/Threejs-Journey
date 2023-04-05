@@ -14,26 +14,6 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
-
-//light
-
-const light = new THREE.PointLight({ color: 'white' })
-light.position.set(-1, 1, 1)
-scene.add(light)
-
-const ambLight = new THREE.AmbientLight({ color: 'white' })
-ambLight.intensity = 0.2
-scene.add(ambLight)
-
-
-// Object
-
-const geometry = new THREE.BoxGeometry()
-const material = new THREE.MeshStandardMaterial({ color: 0xff0000, })
-material.roughness = 0.1
-const mesh = new THREE.Mesh(geometry, material)
-scene.add(mesh)
-
 // Sizes
 
 const sizes = {
@@ -74,6 +54,30 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+
+
+
+
+//light
+
+const light = new THREE.PointLight({ color: 'white' })
+light.position.set(-1, 1, 1)
+scene.add(light)
+
+const ambLight = new THREE.AmbientLight({ color: 'white' })
+ambLight.intensity = 0.2
+scene.add(ambLight)
+
+
+// Object
+
+const geometry = new THREE.BoxGeometry()
+const material = new THREE.MeshStandardMaterial({ color: 0xff0000, })
+material.roughness = 0.1
+const mesh = new THREE.Mesh(geometry, material)
+scene.add(mesh)
+
 
 
 
