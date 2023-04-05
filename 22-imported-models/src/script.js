@@ -55,9 +55,9 @@ gltfLoader.setDRACOLoader(dracoLoader)
 
 let mixer = null
 
-let i = {num: 0}
+// let i = {num: 0}
 
-console.log(i.num);
+// console.log(i.num);
 
 gltfLoader.load(
 
@@ -85,7 +85,7 @@ gltfLoader.load(
 
         // Animation
         mixer = new THREE.AnimationMixer(gltf.scene)
-        const action = mixer.clipAction(gltf.animations[i.num])
+        const action = mixer.clipAction(gltf.animations[1])
         // console.log(action);
 
         action.play()
