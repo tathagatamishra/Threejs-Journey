@@ -1,63 +1,10 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
-import CANNON from 'cannon'
+import * as CANNON from 'cannon-es'
 
 
 console.log(CANNON);
-
-// Debug
-const gui = new dat.GUI()
-const debugObj = {}
-
-debugObj.createSphere = () => {
-    createSphere(
-        (Math.random() * .4) + 0.1, 
-        { 
-            x: (Math.random() - 0.5) * 3, 
-            y: (Math.random() + 2) * 3, 
-            z: (Math.random() - 0.5) * 3 
-        }
-    )
-}
-
-gui.add(debugObj, 'createSphere').name('Click To Create Balls')
-
-
-debugObj.createBox = () => {
-    createBox(
-        (Math.random() * .8) + 0.1, 
-        (Math.random() * .8) + 0.1, 
-        (Math.random() * .8) + 0.1, 
-        { 
-            x: (Math.random() - 0.5) * 3, 
-            y: (Math.random() + 2) * 3, 
-            z: (Math.random() - 0.5) * 3 
-        }
-    )
-}
-
-gui.add(debugObj, 'createBox').name('Click To Create Box')
-
-
-debugObj.reset = () => {
-
-    console.log('removing...')
-
-    for(const object of objectToUpdate) {
-
-         // Remove body
-         object.body.removeEventListener('collide', playSound)
-         world.removeBody(object.body)
-
-         // Remove mesh
-         scene.remove(object.mesh)
-
-         objectToUpdate.splice(0, objectToUpdate.length)
-    }
-}
-
-gui.add(debugObj, 'reset').name('Remove')
 
 
 
@@ -349,6 +296,66 @@ const createBox = (width, height, depth, position) => {
         body
     })
 }
+
+
+
+
+
+
+// Debug
+const gui = new dat.GUI()
+const debugObj = {}
+
+debugObj.createSphere = () => {
+    createSphere(
+        (Math.random() * .4) + 0.1, 
+        { 
+            x: (Math.random() - 0.5) * 3, 
+            y: (Math.random() + 2) * 3, 
+            z: (Math.random() - 0.5) * 3 
+        }
+    )
+}
+
+gui.add(debugObj, 'createSphere').name('Click To Create Balls')
+
+
+debugObj.createBox = () => {
+    createBox(
+        (Math.random() * .8) + 0.1, 
+        (Math.random() * .8) + 0.1, 
+        (Math.random() * .8) + 0.1, 
+        { 
+            x: (Math.random() - 0.5) * 3, 
+            y: (Math.random() + 2) * 3, 
+            z: (Math.random() - 0.5) * 3 
+        }
+    )
+}
+
+gui.add(debugObj, 'createBox').name('Click To Create Box')
+
+
+debugObj.reset = () => {
+
+    console.log('removing...')
+
+    for(const object of objectToUpdate) {
+
+         // Remove body
+         object.body.removeEventListener('collide', playSound)
+         world.removeBody(object.body)
+
+         // Remove mesh
+         scene.remove(object.mesh)
+
+    }
+     objectToUpdate.splice(0, objectToUpdate.length)
+}
+
+gui.add(debugObj, 'reset').name('Remove')
+
+
 
 
 
