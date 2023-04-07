@@ -31,8 +31,13 @@ scene.add(camera)
 // Renderer
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
-    alpha: true
+    alpha: true,
+    antialias: true
 })
+
+// This will make the color same as blender
+renderer.outputEncoding = THREE.sRGBEncoding
+
 renderer.shadowMap.enabled = true
 renderer.shadowMap.type = THREE.PCFSoftShadowMap
 renderer.setSize(sizes.width, sizes.height)
