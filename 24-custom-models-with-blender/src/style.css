@@ -2,17 +2,35 @@
 {
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 html,
 body
 {
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fst {
+    z-index: 2;
+    position: absolute;
+    margin-top: 50px;
+    color: rgb(255, 194, 39);
+}
+.snd {
+    z-index: 1;
+    position: absolute;
+    margin-top: 52.5px;
+    margin-left: 5px;
+    color: rgb(54, 54, 54);
 }
 
 .webgl
 {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     outline: none;

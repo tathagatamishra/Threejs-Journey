@@ -4,11 +4,18 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import * as dat from 'lil-gui'
 
-/**
- * Base
- */
+
 // Debug
-const gui = new dat.GUI()
+// const gui = new dat.GUI()
+
+
+
+
+// Sizes
+const sizes = {
+    width: window.innerWidth,
+    height: window.innerHeight
+}
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -16,9 +23,29 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
-/**
- * Models
- */
+// Camera
+const camera = new THREE.PerspectiveCamera(50, sizes.width / sizes.height, 0.1, 100)
+camera.position.set(- 8, 8, 8)
+scene.add(camera)
+
+// Renderer
+const renderer = new THREE.WebGLRenderer({
+    canvas: canvas,
+    alpha: true
+})
+renderer.shadowMap.enabled = true
+renderer.shadowMap.type = THREE.PCFSoftShadowMap
+renderer.setSize(sizes.width, sizes.height)
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+
+
+
+
+
+
+// Models
+
 const dracoLoader = new DRACOLoader()
 dracoLoader.setDecoderPath('/draco/')
 
@@ -28,31 +55,35 @@ gltfLoader.setDRACOLoader(dracoLoader)
 let mixer = null
 
 gltfLoader.load(
-    '/models/hamburger.glb',
+    '/models/pizza.glb',
     (gltf) =>
     {
+        // gltf.scene.position.set(0,5,0)
         scene.add(gltf.scene)
     }
 )
 
-/**
- * Floor
- */
+
+// Floor
 const floor = new THREE.Mesh(
     new THREE.PlaneGeometry(50, 50),
     new THREE.MeshStandardMaterial({
         color: '#444444',
         metalness: 0,
-        roughness: 0.5
+        roughness: 0.5,
+        side: THREE.DoubleSide
     })
 )
 floor.receiveShadow = true
 floor.rotation.x = - Math.PI * 0.5
-scene.add(floor)
+// scene.add(floor)
 
-/**
- * Lights
- */
+
+
+
+
+
+// Lights
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
 scene.add(ambientLight)
 
@@ -67,56 +98,22 @@ directionalLight.shadow.camera.bottom = - 7
 directionalLight.position.set(5, 5, 5)
 scene.add(directionalLight)
 
-/**
- * Sizes
- */
-const sizes = {
-    width: window.innerWidth,
-    height: window.innerHeight
-}
 
-window.addEventListener('resize', () =>
-{
-    // Update sizes
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
 
-    // Update camera
-    camera.aspect = sizes.width / sizes.height
-    camera.updateProjectionMatrix()
 
-    // Update renderer
-    renderer.setSize(sizes.width, sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-})
 
-/**
- * Camera
- */
-// Base camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(- 8, 4, 8)
-scene.add(camera)
+
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
 controls.target.set(0, 1, 0)
 controls.enableDamping = true
+controls.enablePan = false
 
-/**
- * Renderer
- */
-const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
-})
-renderer.shadowMap.enabled = true
-renderer.shadowMap.type = THREE.PCFSoftShadowMap
-renderer.setSize(sizes.width, sizes.height)
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
-/**
- * Animate
- */
+
+// Animate
+
 const clock = new THREE.Clock()
 let previousTime = 0
 
@@ -142,3 +139,23 @@ const tick = () =>
 }
 
 tick()
+
+
+
+
+
+// Responsive
+window.addEventListener('resize', () =>
+{
+    // Update sizes
+    sizes.width = window.innerWidth
+    sizes.height = window.innerHeight
+
+    // Update camera
+    camera.aspect = sizes.width / sizes.height
+    camera.updateProjectionMatrix()
+
+    // Update renderer
+    renderer.setSize(sizes.width, sizes.height)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+})
