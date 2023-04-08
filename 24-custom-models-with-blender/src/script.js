@@ -24,8 +24,8 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 // Camera
-const camera = new THREE.PerspectiveCamera(50, sizes.width / sizes.height, 0.1, 100)
-camera.position.set(- 8, 8, 8)
+const camera = new THREE.PerspectiveCamera(55, sizes.width / sizes.height, 0.1, 100)
+camera.position.set(- 8, 6, 8)
 scene.add(camera)
 
 // Renderer
@@ -63,7 +63,7 @@ gltfLoader.load(
     '/models/pizza.glb',
     (gltf) =>
     {
-        // gltf.scene.position.set(0,5,0)
+        gltf.scene.position.set(-.5,1,0)
         scene.add(gltf.scene)
     }
 )
