@@ -30,6 +30,7 @@ body
 
 .webgl
 {
+    background-image: linear-gradient(rgb(200, 245, 255), rgb(255, 203, 247));
     position: absolute;
     top: 0;
     left: 0;

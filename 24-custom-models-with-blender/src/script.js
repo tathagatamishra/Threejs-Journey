@@ -100,7 +100,7 @@ directionalLight.shadow.camera.left = - 7
 directionalLight.shadow.camera.top = 7
 directionalLight.shadow.camera.right = 7
 directionalLight.shadow.camera.bottom = - 7
-directionalLight.position.set(5, 5, 5)
+directionalLight.position.set(5, 10, 5)
 scene.add(directionalLight)
 
 
