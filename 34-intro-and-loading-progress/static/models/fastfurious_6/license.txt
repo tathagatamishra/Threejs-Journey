@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dom's Dodge Charger Daytona 1969 Fast&Furious 6
+* source:	https://sketchfab.com/3d-models/doms-dodge-charger-daytona-1969-fastfurious-6-307126f99a0d4620b19ffd871e2477cd
+* author:	Alex.Ka. (https://sketchfab.com/Alex.Ka.)
+
+Model License:
+* license type:	CC-BY-NC-ND-4.0 (http://creativecommons.org/licenses/by-nc-nd/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions can not be distributed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dom's Dodge Charger Daytona 1969 Fast&Furious 6" (https://sketchfab.com/3d-models/doms-dodge-charger-daytona-1969-fastfurious-6-307126f99a0d4620b19ffd871e2477cd) by Alex.Ka. (https://sketchfab.com/Alex.Ka.) licensed under CC-BY-NC-ND-4.0 (http://creativecommons.org/licenses/by-nc-nd/4.0/)
