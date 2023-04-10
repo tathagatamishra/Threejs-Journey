@@ -3,8 +3,19 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 // Loaders
-const gltfLoader = new GLTFLoader()
-const cubeTextureLoader = new THREE.CubeTextureLoader()
+
+const loadingManager = new THREE.LoadingManager(
+    // Loaded
+    () => { console.log('loaded'); },
+
+    // Progress
+    () => { console.log('progress'); }
+)
+
+const gltfLoader = new GLTFLoader(loadingManager)
+const cubeTextureLoader = new THREE.CubeTextureLoader(loadingManager)
+
+
 
 
 // Debug
@@ -25,7 +36,7 @@ const scene = new THREE.Scene()
 
 // Camera
 const camera = new THREE.PerspectiveCamera(55, sizes.width / sizes.height, 0.1, 1000)
-camera.position.set(20, 10, - 20)
+camera.position.set(80, 30, - 0)
 scene.add(camera)
 
 // Renderer
@@ -54,7 +65,7 @@ const overlayMat = new THREE.ShaderMaterial({
     transparent:true,
     uniforms:
     {
-        uAlpha: {value: 1}
+        uAlpha: {value: 0}
     },
     vertexShader: `
         void main()
@@ -115,11 +126,59 @@ debugObject.envMapIntensity = 2.5
 
 // Models
 gltfLoader.load(
+    '/models/ferrari_f50/scene.gltf',
+    (gltf) =>
+    {
+        gltf.scene.scale.set(5, 5, 5)
+        gltf.scene.position.set(10, - 4, -20)
+        gltf.scene.rotation.y = Math.PI * 0.5
+        scene.add(gltf.scene)
+
+        updateAllMaterials()
+    }
+)
+gltfLoader.load(
+    '/models/dodge_two/scene.gltf',
+    (gltf) =>
+    {
+        gltf.scene.scale.set(5, 5, 5)
+        gltf.scene.position.set(10, - 4, 20)
+        gltf.scene.rotation.y = Math.PI * 0.5
+        scene.add(gltf.scene)
+
+        updateAllMaterials()
+    }
+)
+gltfLoader.load(
+    '/models/porsche_911/scene.gltf',
+    (gltf) =>
+    {
+        gltf.scene.scale.set(5, 5, 5)
+        gltf.scene.position.set(20, - 4, 0)
+        gltf.scene.rotation.y = Math.PI * 0.5
+        scene.add(gltf.scene)
+
+        updateAllMaterials()
+    }
+)
+gltfLoader.load(
     '/models/fastfurious_6/scene.gltf',
     (gltf) =>
     {
         gltf.scene.scale.set(5, 5, 5)
-        gltf.scene.position.set(0, - 4, 0)
+        gltf.scene.position.set(-10, - 4, 40)
+        gltf.scene.rotation.y = Math.PI * 0.5
+        scene.add(gltf.scene)
+
+        updateAllMaterials()
+    }
+)
+gltfLoader.load(
+    '/models/dodge_charger/scene.gltf',
+    (gltf) =>
+    {
+        gltf.scene.scale.set(5, 5, 5)
+        gltf.scene.position.set(-10, - 4, -40)
         gltf.scene.rotation.y = Math.PI * 0.5
         scene.add(gltf.scene)
 

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dodge Charger Daytona 1969 Custom One
+* source:	https://sketchfab.com/3d-models/dodge-charger-daytona-1969-custom-one-aa7f05f88e5a456fa51c34ea7069d067
+* author:	Alex.Ka. (https://sketchfab.com/Alex.Ka.)
+
+Model License:
+* license type:	CC-BY-NC-ND-4.0 (http://creativecommons.org/licenses/by-nc-nd/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions can not be distributed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dodge Charger Daytona 1969 Custom One" (https://sketchfab.com/3d-models/dodge-charger-daytona-1969-custom-one-aa7f05f88e5a456fa51c34ea7069d067) by Alex.Ka. (https://sketchfab.com/Alex.Ka.) licensed under CC-BY-NC-ND-4.0 (http://creativecommons.org/licenses/by-nc-nd/4.0/)
