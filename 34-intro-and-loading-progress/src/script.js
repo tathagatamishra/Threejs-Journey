@@ -1,15 +1,43 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import {gsap} from 'gsap'
+
+
+
 
 // Loaders
 
+const loadingElement = document.querySelector('.loading')
+
 const loadingManager = new THREE.LoadingManager(
     // Loaded
-    () => { console.log('loaded'); },
+    () => 
+    { 
+        gsap.delayedCall(0.5, () =>
+            {
+                console.log('loaded'); 
+                gsap.to(overlayMat.uniforms.uAlpha, {duration: 3, value: 0})
+                loadingElement.classList.add('ended')
+                loadingElement.style.transform = ''
+            })
+        // window.setTimeout(() => 
+        // {
+        //     // console.log('loaded'); 
+        //     gsap.to(overlayMat.uniforms.uAlpha, {duration: 3, value: 0})
+        //     loadingElement.classList.add('ended')
+        //     loadingElement.style.transform = ''
+        // }, 500)
+        
+    },
 
     // Progress
-    () => { console.log('progress'); }
+    (itemUrl, itemLoaded, itemTotal) => 
+    { 
+        const loadingRatio = itemLoaded / itemTotal
+        console.log(loadingRatio); 
+        loadingElement.style.transform = `scaleX(${loadingRatio})`
+    }
 )
 
 const gltfLoader = new GLTFLoader(loadingManager)
@@ -20,6 +48,11 @@ const cubeTextureLoader = new THREE.CubeTextureLoader(loadingManager)
 
 // Debug
 const debugObject = {}
+
+
+
+
+
 
 
 // Sizes
@@ -65,7 +98,7 @@ const overlayMat = new THREE.ShaderMaterial({
     transparent:true,
     uniforms:
     {
-        uAlpha: {value: 0}
+        uAlpha: {value: 1}
     },
     vertexShader: `
         void main()
@@ -78,7 +111,7 @@ const overlayMat = new THREE.ShaderMaterial({
 
         void main()
         {
-            gl_FragColor = vec4(0.0, 0.0, 0.0, uAlpha);
+            gl_FragColor = vec4(1, 1, 1, uAlpha);
         }
     `
 })
