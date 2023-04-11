@@ -58,7 +58,7 @@ body
 .fst {
     font-family: 'DynaPuff', cursive;
     width: 100%;
-    font-size: 4rem;
+    font-size: 2rem;
     text-align: center;
     z-index: 2;
     position: absolute;
@@ -68,12 +68,12 @@ body
 .snd {
     font-family: 'DynaPuff', cursive;
     width: 100%;
-    font-size: 4rem;
+    font-size: 2rem;
     text-align: center;
     z-index: 1;
     position: absolute;
     margin-top: 42.5px;
-    margin-left: 5px;
+    margin-left: 3px;
     color: rgb(54, 54, 54);
 }
 
