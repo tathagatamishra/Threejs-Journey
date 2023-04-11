@@ -218,7 +218,7 @@ controls.minDistance = 10;
 controls.maxDistance = 50;
 controls.minPolarAngle = 0;
 controls.maxPolarAngle =  Math.PI * 0.5;
-controls.panSpeed = 0.3
+controls.panSpeed = 0.1
 
 
 

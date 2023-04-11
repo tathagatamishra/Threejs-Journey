@@ -7,15 +7,20 @@
 html,
 body
 {
+    font-family: 'DynaPuff', cursive;
     overflow: hidden;
+    z-index: 2;
 }
 
-.webgl
-{
-    position: fixed;
+.bg 
+{   
+    overflow: hidden;
     top: 0;
     left: 0;
     outline: none;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(rgb(200, 245, 255), rgb(255, 203, 247));
 }
 
 .loading 
@@ -35,4 +40,34 @@ body
 {
     transform-origin: top right;
     transition: transform 1.5s ease-in-out;
+}
+
+.webgl
+{
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+
+.fst {
+    width: 100%;
+    font-size: 4rem;
+    text-align: center;
+    z-index: 1;
+    position: absolute;
+    margin-top: 40px;
+    color: rgb(255, 194, 39);
+}
+.snd {
+    width: 100%;
+    font-size: 4rem;
+    text-align: center;
+    z-index: 0;
+    position: absolute;
+    margin-top: 42.5px;
+    margin-left: 5px;
+    color: rgb(54, 54, 54);
 }
