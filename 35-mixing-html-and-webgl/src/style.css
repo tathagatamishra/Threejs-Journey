@@ -7,13 +7,14 @@
 html,
 body
 {
-    font-family: 'DynaPuff', cursive;
     overflow: hidden;
     z-index: 2;
+    cursor: crosshair;
 }
 
 .bg 
 {   
+    z-index: 0;
     overflow: hidden;
     top: 0;
     left: 0;
@@ -25,6 +26,7 @@ body
 
 .loading 
 {
+    z-index: 4;
     position: absolute;
     top: 50%;
     width: 100%;
@@ -38,13 +40,14 @@ body
 
 .loading.ended
 {
+    z-index: 4;
     transform-origin: top right;
     transition: transform 1.5s ease-in-out;
 }
 
 .webgl
 {
-    z-index: 2;
+    z-index: 3;
     position: fixed;
     top: 0;
     left: 0;
@@ -53,21 +56,80 @@ body
 
 
 .fst {
+    font-family: 'DynaPuff', cursive;
     width: 100%;
     font-size: 4rem;
     text-align: center;
-    z-index: 1;
+    z-index: 2;
     position: absolute;
     margin-top: 40px;
     color: rgb(255, 194, 39);
 }
 .snd {
+    font-family: 'DynaPuff', cursive;
     width: 100%;
     font-size: 4rem;
     text-align: center;
-    z-index: 0;
+    z-index: 1;
     position: absolute;
     margin-top: 42.5px;
     margin-left: 5px;
     color: rgb(54, 54, 54);
+}
+
+.point 
+{
+    z-index: 5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.point:hover .text
+{
+    opacity: 1;
+}
+
+.point.visible .label 
+{
+    transform: scale(1, 1);
+}
+
+.point .label 
+{
+    user-select:none;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.584);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    transform: scale(0, 0);
+    transition: transform 0.3s;
+}
+
+.point .text
+{
+    position: absolute;
+    top: 30px;
+    left: -120px;
+    width: 200px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.603);
+    color: white;
+    line-height: 1.3rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
 }

@@ -9,6 +9,8 @@ import {gsap} from 'gsap'
 
 // Loaders
 
+let sceneReady = false
+
 const loadingElement = document.querySelector('.loading')
 
 const loadingManager = new THREE.LoadingManager(
@@ -30,6 +32,10 @@ const loadingManager = new THREE.LoadingManager(
         //     loadingElement.style.transform = ''
         // }, 500)
         
+        window.setTimeout(() =>
+        {
+            sceneReady = true
+        }, 5000)
     },
 
     // Progress
@@ -44,11 +50,6 @@ const loadingManager = new THREE.LoadingManager(
 const gltfLoader = new GLTFLoader(loadingManager)
 const cubeTextureLoader = new THREE.CubeTextureLoader(loadingManager)
 
-
-
-
-// Debug
-const debugObject = {}
 
 
 
@@ -125,6 +126,9 @@ scene.add(overlay)
 
 
 
+// Debug
+const debugObject = {}
+
 
 // Update all materials
 const updateAllMaterials = () =>
@@ -195,6 +199,31 @@ gltfLoader.load(
 )
 
 
+// Points
+
+const raycaster = new THREE.Raycaster()
+
+const points = [
+    {
+        position: new THREE.Vector3(-1,2,1.5),
+        element: document.querySelector('.point-0')
+    },
+    {
+        position: new THREE.Vector3(-5,2,-4),
+        element: document.querySelector('.point-1')
+    },
+    {
+        position: new THREE.Vector3(3,-3,-5),
+        element: document.querySelector('.point-2')
+    }
+]
+
+// console.log(points);
+
+
+
+
+
 
 // Lights
 
@@ -235,7 +264,6 @@ const tick = () =>
     previousTime = elapsedTime
 
 
-
     // Update animation mixer
     if(mixer !== null) {
 
@@ -245,6 +273,49 @@ const tick = () =>
 
     // Update controls
     controls.update()
+
+
+    // if the scene is ready then Go through each points
+    if(sceneReady)
+    {
+        for(const point of points)
+        {
+            const screenPosition = point.position.clone()
+            screenPosition.project(camera)
+    
+            raycaster.setFromCamera(screenPosition, camera)
+            const intersects = raycaster.intersectObjects(scene.children, true)
+    
+            if(intersects.length === 0)
+            {
+                point.element.classList.add('visible')
+            }
+            else
+            {
+                // need to compair these 2 distance
+                const intersectDistance = intersects[0].distance
+                const pointDistance = point.position.distanceTo(camera.position)
+                
+                if(intersectDistance < pointDistance) 
+                {
+                    point.element.classList.remove('visible')
+                }
+                else
+                {
+                    point.element.classList.add('visible')
+                }
+    
+            }
+    
+    
+            const translateX = (screenPosition.x * sizes.width) / 2
+            const translateY = - (screenPosition.y * sizes.height) / 2
+    
+            // point.element.style.transform = `translateX(${translateX}px) translateY(${translateY}px)`
+            point.element.style.transform = `translate(${translateX}px, ${translateY}px)`
+        }
+    }
+
 
     // Render
     renderer.render(scene, camera)
