@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 
-export default function Clicker() {
+export default function Clicker({keyName}) {  // destructering props
   
+  // if their is any key present in <Clicker />, it will be props
+  console.log(keyName);
+
   // const countState = useState(0)
   // console.log(countState);
   // const count = countState[0]
@@ -12,30 +15,48 @@ export default function Clicker() {
 
   // useState to create reactive data
   // const [count, setCount] = useState(0)
-  const [count, setCount] = useState(parseInt(localStorage.getItem('count') ?? 0))
+  
+  // localStorage take key name as a string
+  // const [count, setCount] = useState(parseInt(localStorage.getItem('count') ?? 0))
+
+  // Making it dynamic, by providing keyName
+  const [count, setCount] = useState(parseInt(localStorage.getItem(keyName) ?? 0))
 
   // let count = 0;
 
   useEffect(() => 
   {
-    // localStroage only store string
+    // localStorage only store string
     // const savedCount = parseInt(localStorage.getItem('count') ?? 0)
     // if no item == NaN || undefined => print 0
     // setCount(savedCount)
     // console.log(savedCount);
+
+
+    // 😵‍💫 WEIRD EFFECT
+    // this useEffect will be called first time only
     console.log('first render');   
     // if this component destroyed & recreate again, this log will be called again
 
 
-    // return in a useEffect only called when this component will be destroied
-    return () => console.log('Component disposed');
+    // 😵‍💫 WEIRD EFFECT
+    // return in a useEffect only called when this component will be destroyed
+    return () => 
+    {
+      console.log('Component disposed');
+
+      // localStorage.removeItem('count')
+      localStorage.removeItem(keyName)
+    }
+
   }, [])
   // [] will make useEffect call only on first render
 
   // useEffect to control re-render
   useEffect(() => 
   {
-    localStorage.setItem('count', count)
+    // localStorage.setItem('count', count)
+    localStorage.setItem(keyName, count)
     // console.log('hello');
   }, [count])  
   // specify a reactive data inside []

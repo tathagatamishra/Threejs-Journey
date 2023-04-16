@@ -16,9 +16,34 @@ export default function App() {
     <>
     <button id="btn" onClick={toggleClicker}>{hasClicker ? 'Hide' : 'Show'}</button>
     {/* <Clicker /> */}
+
     {/* {hasClicker ? <Clicker /> : null} */}
-    {hasClicker && <Clicker />}
     {/* Both same */}
+    {/* {hasClicker && <Clicker />} */}
+
+    {/* 
+    {hasClicker && <Clicker />}
+    {hasClicker && <Clicker />}
+    {hasClicker && <Clicker />}
+     */}
+    {/* 
+    Both same   
+    multiple condition & multiple clicker
+    one condition & multiple clicker in fragment
+    */}
+    {/* {hasClicker && <><Clicker /><Clicker /><Clicker /></>} */}
+
+
+    {/* to make unique count for each clicker component, we need props */}
+    {
+    hasClicker && 
+    <>
+      <Clicker keyName="countA" />
+      <Clicker keyName="countB" />
+      <Clicker keyName="countC" />
+    </>
+    }
+    {/* using keyName we retrieve data as props in clicker component */}
     </>
   );
 }
