@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
-export default function Clicker({keyName}) {  // destructering props
+export default function Clicker({keyName, color}) {  // destructering props
   
   // if their is any key present in <Clicker />, it will be props
-  console.log(keyName);
+  console.log(keyName, color);
 
   // const countState = useState(0)
   // console.log(countState);
@@ -73,7 +73,7 @@ export default function Clicker({keyName}) {  // destructering props
 
   return (
     <div>
-      <h1>{count}</h1>
+      <h1 style={{ color: color }}>{count}</h1>
       <button onClick={inc}>Click</button>
     </div> 
   );

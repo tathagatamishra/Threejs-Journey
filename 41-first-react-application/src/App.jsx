@@ -38,9 +38,9 @@ export default function App() {
     {
     hasClicker && 
     <>
-      <Clicker keyName="countA" />
-      <Clicker keyName="countB" />
-      <Clicker keyName="countC" />
+      <Clicker keyName="countA" color="red" />
+      <Clicker keyName="countB" color="green" />
+      <Clicker keyName="countC" color="blue" />
     </>
     }
     {/* using keyName we retrieve data as props in clicker component */}
