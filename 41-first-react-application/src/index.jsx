@@ -1,8 +1,9 @@
-import './style.css'
 import { createRoot } from 'react-dom/client'
+import './style.css'
+import App from './App'
 
 const root = createRoot(document.querySelector('#root'))
 
 root.render(
-    <h1>Hello React {Math.random()}</h1>
+    <App></App>
 )
