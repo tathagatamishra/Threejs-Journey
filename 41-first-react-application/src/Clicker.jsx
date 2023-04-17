@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 
-export default function Clicker({keyName, color}) {  // destructering props
+
+// if the the color key not present in a <Clicker />, then make a default color
+export default function Clicker({increment, keyName, color="blue"}) {  
+  // destructering props
   
   // if their is any key present in <Clicker />, it will be props
-  console.log(keyName, color);
+  // console.log(increment, keyName, color);
 
   // const countState = useState(0)
   // console.log(countState);
@@ -24,8 +27,20 @@ export default function Clicker({keyName, color}) {  // destructering props
 
   // let count = 0;
 
+
+  // creating a ref
+  const btnRef = useRef()
+  // console.log(btnRef);
+  // but this btnRef is being ref inside <button ref={ btnRef }> which is not exist/rendered yet
+  // so we need to call it after first render
+
   useEffect(() => 
   {
+    // btnRef
+    btnRef.current.style.backgroundColor = 'papayawhip'
+    btnRef.current.style.color = 'salmon'
+
+
     // localStorage only store string
     // const savedCount = parseInt(localStorage.getItem('count') ?? 0)
     // if no item == NaN || undefined => print 0
@@ -69,12 +84,19 @@ export default function Clicker({keyName, color}) {  // destructering props
 
     // count++
     console.log(count);
+
+
+    // lift the state up
+    // global increment coming from parent
+    increment()
   }
 
   return (
     <div>
-      <h1 style={{ color: color }}>{count}</h1>
-      <button onClick={inc}>Click</button>
+      {/* <h1 style={{ color: color }}>{count}</h1> */}
+      {/* in ES6, when the name of key-value is same */}
+      <h1 style={{ color }}>{count}</h1>
+      <button ref={ btnRef } onClick={ inc }>Click</button>
     </div> 
   );
 }
