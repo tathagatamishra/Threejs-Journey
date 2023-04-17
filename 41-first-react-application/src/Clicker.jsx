@@ -29,7 +29,11 @@ export default function Clicker({increment, keyName, color="blue"}) {
 
 
   // creating a ref
+  // ref will help to manipulate DOM
+  // don't forgot to use .current
+
   const btnRef = useRef()
+  
   // console.log(btnRef);
   // but this btnRef is being ref inside <button ref={ btnRef }> which is not exist/rendered yet
   // so we need to call it after first render
@@ -37,6 +41,8 @@ export default function Clicker({increment, keyName, color="blue"}) {
   useEffect(() => 
   {
     // btnRef
+    // don't forgot to use .current
+
     btnRef.current.style.backgroundColor = 'papayawhip'
     btnRef.current.style.color = 'salmon'
 
