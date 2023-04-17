@@ -48,7 +48,7 @@ export default function People() {
     setPeople(data)
   }
 
-
+  // API call after first render
   useEffect(() => 
   {
     getPeople()
