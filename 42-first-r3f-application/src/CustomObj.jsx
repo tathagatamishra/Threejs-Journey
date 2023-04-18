@@ -31,7 +31,7 @@ export default function CustomObj() {
 
   return (
     <mesh scale={[0.4, 0.4, 0.4]}>
-      <bufferGeometry ref={geometryRef}>
+      <bufferGeometry ref={geometryRef} >
         <bufferAttribute
           attach="attributes-position"
           count={vertexCount}

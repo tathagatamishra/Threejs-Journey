@@ -1,10 +1,9 @@
 // extend is to create our own declarative element
-import * as THREE from 'three'
+import * as THREE from "three";
 import { extend, useFrame, useThree } from "@react-three/fiber";
 import { useRef } from "react";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import CustomObj from "./CustomObj";
-
 
 // in R3F every three.js classes are declarative
 // it means, we do not need to import
@@ -31,6 +30,14 @@ export default function App() {
     // console.log(state)
     // console.log(delta);
 
+    // animating camera
+    // const angle = state.clock.elapsedTime
+    // state.camera.position.x = Math.sin(angle) * 8
+    // state.camera.position.z = Math.cos(angle) * 8
+    // state.camera.lookAt(0, 0, 0)
+
+
+
     // this will make the speed same in every devices
     cubeRef.current.rotation.y += delta;
     cubeRef.current.rotation.x += delta;
@@ -48,12 +55,13 @@ export default function App() {
 
   return (
     <>
+      {/* commenting orbitControls to animate camera in index.jsx */}
       <orbitControls args={[camera, gl.domElement]} />
 
-      {/* Lights */}
-      <directionalLight position={[1,2,3]} />
-      <ambientLight intensity={0.3} />
 
+      {/* Lights */}
+      <directionalLight position={[1, 2, 3]} />
+      <ambientLight intensity={0.3} />
 
       {/* <mesh position={ [2, 0, 0] } scale={ [3, 2, 1] }> */}
       {/* if the value of X, Y, Z are same */}
