@@ -9,3 +9,16 @@ body,
     height: 100%;
     background: ivory;
 }
+
+.label > div
+{
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.523);
+    color: white;
+    padding: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-radius: 30px;
+    user-select: none;
+}
