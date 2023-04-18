@@ -1,7 +1,7 @@
 <h1 align="center">Threejs-Journey</h1>
 
 <p align="center">
-This is the practice projects of Threejs-Journey course by Bruno Simon
+Projects from Threejs-Journey course by Bruno Simon
 <br>
 https://threejs-journey.com/
 <br><br>
