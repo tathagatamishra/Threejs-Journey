@@ -1,5 +1,6 @@
 import React from "react";
 
+// default scale value is 1
 export default function Cube({ scale = 1 }) {
 
   return (
