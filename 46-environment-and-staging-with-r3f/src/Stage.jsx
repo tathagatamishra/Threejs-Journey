@@ -26,7 +26,7 @@ export default function Experience() {
 
       <OrbitControls makeDefault />
 
-      {/* <Stage> */}
+      <Stage>
 
         <mesh ref={sphere} castShadow position-y={0} position-x={-2}>
           <sphereGeometry />
@@ -38,7 +38,7 @@ export default function Experience() {
           <meshStandardMaterial color="mediumpurple" roughness={0} metalness={0.1} />
         </mesh>
 
-      {/* </Stage> */}
+      </Stage>
     </>
   );
 }

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
 
-import Environment from "./Stage";
+import Experience from "./Stage";
 
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
@@ -52,6 +52,6 @@ root.render(
     <color args={['pink']} attach='background' />
 
     {/* background color overwritten inside of Experience */}
-    <Environment />
+    <Experience />
   </Canvas>
 );
